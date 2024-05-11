@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gapopa/controllers/image_controller.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'dart:async'; // Import dart:async to use Timer
 import 'image_grid_view.dart';
 import '../controllers/pixabay_api.dart';
@@ -34,10 +37,14 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       if (page == 1) images.clear();
       images.addAll(fetchedImages);
+      Get.find<ImageController>(
+
+      ).images = images;
       isLoading = false;
       page++;
     });
   }
+
 
   void _onScroll() {
     if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
@@ -63,22 +70,34 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.black,
-        title: TextField(
-          controller: _searchController,
-          decoration: InputDecoration(
-            hintText: "Search images",
-            border: InputBorder.none,
-            hintStyle: TextStyle(color: Colors.white),
+        title: Padding(
+          padding:  EdgeInsets.only(
+            left: MediaQuery.of(context).size.width/4,
           ),
-          style: TextStyle(color: Colors.white, fontSize: 16),
+          child: TextField(
+
+            controller: _searchController,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.red,
+              hintText: "Search images",
+              border: InputBorder.none,
+              hintStyle: TextStyle(color: Colors.white),
+            ),
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.clear),
-            onPressed: () {
-              _searchController.clear();
-            },
+          Padding(
+            padding: EdgeInsets.only(right: MediaQuery.of(context).size.width/4),
+            child: IconButton(
+              icon: Icon(Icons.clear, color: Colors.white,),
+              onPressed: () {
+                _searchController.clear();
+              },
+            ),
           ),
         ],
       ),
