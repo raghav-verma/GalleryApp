@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.clear),
+            icon: Icon(Icons.clear, color: Colors.white,),
             onPressed: () {
               _searchController.clear();
             },

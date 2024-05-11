@@ -1,8 +1,10 @@
 class ImageData {
   final String id;
   final String url;
-  final int likes;
+  int likes;
   final int views;
+  bool isLiked = false;
+
 
   ImageData({required this.id, required this.url, required this.likes, required this.views});
 
@@ -12,6 +14,7 @@ class ImageData {
       url: json['webformatURL'],
       likes: json['likes'],
       views: json['views'],
+
     );
   }
 }
