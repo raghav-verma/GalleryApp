@@ -1,36 +1,14 @@
-// import 'package:flutter/material.dart';
-// import 'views/home_page.dart';
-//
-// void main() {
-//   runApp(MyApp());
-// }
-//
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Pixabay Image Gallery',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//         visualDensity: VisualDensity.adaptivePlatformDensity,
-//       ),
-//       home: HomePage(),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
+import 'package:gapopa/features/image_gallery/views/screens/index.dart';
 import 'package:get/get.dart';
-import 'controllers/image_controller.dart';
-import 'views/home_page.dart';
+import 'features/image_gallery/controllers/index.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key) {
+  MyApp({super.key}) {
     Get.put(ImageController());
   }
 
@@ -43,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: const HomeScreen(),
     );
   }
 }
